@@ -1,0 +1,12 @@
+
+@model Sitecore.Data.Items.Item
+
+<div>
+    Way 1 - @Model["WebsiteHeading"]
+    <br />
+    Way 2 - @Model.Fields["WebsiteHeading"].Value
+    <br />
+    Way 3 - @Html.Sitecore().Field("WebsiteHeading", Model)
+    <br />
+    Way 4 - @Html.Raw(Model.Fields["WebsiteHeading"].Value)
+</div>

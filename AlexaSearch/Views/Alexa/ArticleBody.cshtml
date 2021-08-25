@@ -1,0 +1,9 @@
+<div>
+			<h1>@Html.Sitecore().Field("title") </h1>
+			<h4>@Html.Sitecore().Field("BlogId", new { DisableWebEdit = true })</h4>
+			<h4>@Html.Sitecore().Field("description")</h4>
+			<h4>@Html.Sitecore().Field("author")</h4>
+			<h4>@Html.Sitecore().Field("authorwikilink")</h4>
+			<h4>@Html.Sitecore().Field("posteddate", new { format = "yyyy-MMM-dd" })</h4>
+			<h4>@Html.Sitecore().Field("blogimage",new {w=160, h=160})</h4>
+		</div>

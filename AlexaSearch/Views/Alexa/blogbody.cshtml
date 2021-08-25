@@ -1,0 +1,91 @@
+﻿@{
+    var item = Sitecore.Context.Database.GetItem("{39A830CE-0C84-4676-AA03-F4044FF87EF0}");
+
+  
+}
+
+@using AlexaSearch.Models 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap-themed.min.css">
+    <link rel="stylesheet" href="assets/css/blogsite.css">
+
+    <title>@Html.Sitecore().Field("Title", item)</title>
+
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="jumbotron text-white bg-primary">
+                <h1 class="display-3"> @Html.Sitecore().Field("Header-Title", item)</h1>
+                <p class="lead">@Html.Sitecore().Field("Header-SubTitle", item)</p>
+            </div>
+        </div><!-- /.container -->
+    </header>
+
+</body>
+<main role="main" class="container blog-posts">
+    @*@using (Html.BeginForm("ArticleBody", "ATest", FormMethod.Post))
+        {*@
+    @using (Html.BeginRouteForm(Sitecore.Mvc.Configuration.MvcSettings.SitecoreRouteName, FormMethod.Post))
+    {
+        @Html.Sitecore().FormHandler("AlexaSearchIndex", "blogbody")
+
+        <div class="main-search">
+            <div class="input-group">
+                @Html.TextBox("searchInput", "", new { @class = "form-control", placeholder = @Html.Sitecore().Field("HighLighterText", item), autocomplete = "off" })
+                <div class="input-group-append">
+
+                    <input type="submit" id="btnSearch" class="btn btn-dark" value="@Html.Sitecore().Field("ButtonLabel", item)" />
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <br>
+    }
+
+<div class="row" id="one">
+    @{
+
+
+        foreach (BlogModel Postcards in (List<BlogModel>)ViewBag.multi)
+        {
+
+        <div class="blog-post-card card col-lg-4 col-md-6">
+            @Html.Sitecore().Field("ArticleSmallImage", Postcards.sitecoreItem, new { @class = "card-img-top" })
+            <div class="card-body bg-light">
+                <strong class="d-inline-block mb-2 text-success">@Postcards.Category</strong>
+                <h3 class="card-title">@Postcards.BlogTitle</h3>
+                <div class="mb-1 text-muted">@Postcards.date</div>
+                <p>@Postcards.ShortDesc</p>
+                <a href="@Postcards.BlogURL" class="btn btn-warning btn-block">@Html.Sitecore().Field("PostCardButtonText", item)</a>
+            </div>
+        </div>
+        }
+
+
+
+
+    }
+
+
+</div>
+
+
+</main>
+<Footer>
+    <div class="container">
+        <div class="text-white bg-primary">
+            <p class="lead">@Html.Sitecore().Field("Copyright", item)</p>
+        </div>
+    </div>
+</Footer>
